@@ -1,19 +1,20 @@
 :root { 
-    /* Paleta Minimalista y Botánica */
-    --bg-main: #F9F9F6;          /* Crema muy claro/Blanco hueso */
-    --surface: #FFFFFF;          /* Blanco puro para modales */
-    --text-dark: #2C302E;        /* Gris carbón para textos principales */
-    --text-muted: #7A7D7B;       /* Gris suave para descripciones */
-    --accent: #4A6741;           /* Verde Salvia / Bosque profundo */
-    --accent-light: #E8EDE6;     /* Verde muy claro para fondos tenues */
-    --danger: #C84B31;           /* Rojo terracota apagado */
+    /* Paleta Dark & Gold (Estilo BAHIA) */
+    --bg-main: #0B0C0A;          /* Negro profundo con un levísimo toque cálido */
+    --surface: #161715;          /* Gris muy oscuro para modales y fondos expandidos */
+    --text-dark: #E8D7B0;        /* Dorado suave/Beige para textos principales y títulos */
+    --text-muted: #AFA07C;       /* Dorado apagado para descripciones */
+    --accent: #D4AF37;           /* Dorado brillante para precios, botones y detalles */
+    --accent-light: #2A2415;     /* Fondo tenue dorado para efectos hover */
+    --danger: #A34A4A;           /* Rojo apagado para botones de eliminar/excluir */
     
     /* Tipografías */
+    /* Usar Playfair para todo da ese efecto elegante de menú clásico */
     --font-heading: 'Playfair Display', serif;
-    --font-body: 'Poppins', sans-serif;
+    --font-body: 'Playfair Display', serif; 
     
-    --radius-sm: 4px;
-    --radius-md: 8px;
+    --radius-sm: 2px;
+    --radius-md: 4px;
 }
 
 * {
@@ -28,6 +29,9 @@ body {
     color: var(--text-dark); 
     -webkit-font-smoothing: antialiased;
     line-height: 1.6;
+    /* Un sutil degradado radial para simular iluminación en el centro */
+    background-image: radial-gradient(circle at center, #151614 0%, #0B0C0A 100%);
+    min-height: 100vh;
 }
 
 .container {
@@ -37,7 +41,7 @@ body {
 }
 
 /* =========================================
-   ENCABEZADO MINIMALISTA (HERO)
+   ENCABEZADO ELEGANTE (HERO)
    ========================================= */
 .minimal-hero {
     text-align: center;
@@ -50,26 +54,54 @@ body {
     font-weight: 700;
     letter-spacing: 4px;
     text-transform: uppercase;
-    color: var(--text-dark);
+    color: var(--accent);
     margin-bottom: 5px;
+    text-shadow: 1px 1px 10px rgba(212, 175, 55, 0.2);
 }
 
 .brand-subtitle {
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: var(--text-muted);
     letter-spacing: 1px;
-    text-transform: uppercase;
+    font-style: italic;
+    position: relative;
+    display: inline-block;
+}
+
+/* Detalles decorativos a los lados del subtítulo imitando el diseño */
+.brand-subtitle::before,
+.brand-subtitle::after {
+    content: '•';
+    color: var(--accent);
+    margin: 0 8px;
+    font-size: 1.2rem;
+    vertical-align: middle;
 }
 
 .separator-line {
-    width: 60px;
+    width: 250px;
     height: 1px;
-    background-color: var(--accent);
-    margin: 20px auto 30px;
+    background-color: transparent;
+    border-top: 1px solid rgba(212, 175, 55, 0.4);
+    margin: 25px auto 35px;
+    position: relative;
+}
+
+/* Ornamento central en la línea separadora */
+.separator-line::after {
+    content: "❦"; /* Símbolo floral/vintage */
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--accent);
+    font-size: 18px;
+    background: var(--bg-main);
+    padding: 0 15px;
 }
 
 /* =========================================
-   TABS / CATEGORÍAS (Líneas limpias)
+   TABS / CATEGORÍAS
    ========================================= */
 .tabs { 
     display: flex; 
@@ -77,26 +109,27 @@ body {
     margin-bottom: 40px; 
     position: sticky; 
     top: 0; 
-    background: rgba(249, 249, 246, 0.95); 
+    background: rgba(11, 12, 10, 0.95); 
     backdrop-filter: blur(8px); 
     padding: 15px 0; 
     z-index: 10; 
     justify-content: center; 
     flex-wrap: wrap; 
+    border-bottom: 1px solid rgba(212, 175, 55, 0.15);
 }
 
 .tab-btn { 
     background: transparent; 
     border: none;
     border-bottom: 2px solid transparent;
-    font-family: var(--font-body);
+    font-family: var(--font-heading);
     font-weight: 500; 
-    font-size: 0.9rem; 
+    font-size: 1rem; 
     color: var(--text-muted); 
     cursor: pointer; 
-    padding: 8px 4px; 
+    padding: 8px 12px; 
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
     transition: all 0.3s ease; 
 }
 
@@ -105,18 +138,19 @@ body {
 }
 
 .tab-btn.active { 
-    color: var(--text-dark); 
+    color: var(--accent); 
     border-bottom: 2px solid var(--accent); 
 }
 
 /* =========================================
-   PLATOS (Estilo Lista Impresa)
+   PLATOS (Estilo Menú Clásico)
    ========================================= */
 .dish-item { 
     margin-bottom: 0; 
     padding: 20px 10px; 
     background: transparent; 
-    border-bottom: 1px dashed #D5D5D0; 
+    /* Línea punteada dorada para simular el menú de la imagen */
+    border-bottom: 1px dotted rgba(212, 175, 55, 0.4); 
     transition: background 0.3s ease;
 }
 
@@ -125,7 +159,7 @@ body {
 }
 
 .dish-item:hover {
-    background: rgba(0,0,0,0.02);
+    background: rgba(212, 175, 55, 0.03);
 }
 
 .dish-header {
@@ -138,24 +172,25 @@ body {
 
 .dish-header h3 { 
     font-family: var(--font-heading);
-    font-size: 1.2rem; 
-    font-weight: 600; 
+    font-size: 1.25rem; 
+    font-weight: 400; 
     color: var(--text-dark); 
     margin: 0;
+    letter-spacing: 0.5px;
 } 
 
 .dish-header p {
     color: var(--text-muted);
-    font-size: 0.85rem;
-    font-weight: 300;
+    font-size: 0.9rem;
+    font-style: italic;
     margin-top: 4px;
 }
 
 .dish-price { 
-    font-family: var(--font-body);
+    font-family: var(--font-heading);
     font-weight: 500; 
-    font-size: 1.1rem; 
-    color: var(--text-dark); 
+    font-size: 1.2rem; 
+    color: var(--accent); 
     white-space: nowrap;
 }
 
@@ -174,6 +209,7 @@ body {
     opacity: 1; 
     margin-top: 15px; 
     padding-top: 15px; 
+    border-top: 1px dashed rgba(212, 175, 55, 0.2);
 }
 
 .ing-container { 
@@ -184,22 +220,27 @@ body {
 }
 
 .ing-pill { 
-    background: transparent; 
-    color: var(--text-muted); 
-    font-size: 0.8rem; 
-    padding: 4px 12px; 
-    border-radius: 20px; 
-    border: 1px solid #D5D5D0; 
+    background: var(--surface); 
+    color: var(--text-dark); 
+    font-size: 0.85rem; 
+    padding: 6px 14px; 
+    border-radius: var(--radius-sm); 
+    border: 1px solid rgba(212, 175, 55, 0.3); 
     text-transform: lowercase; 
     cursor: pointer;
     transition: all 0.2s;
+    font-family: 'Poppins', sans-serif; /* Un toque moderno solo para los tags */
+}
+
+.ing-pill:hover {
+    border-color: var(--accent);
 }
 
 .ing-pill.excluido { 
     color: var(--danger); 
     text-decoration: line-through; 
-    border-color: rgba(200, 75, 49, 0.3); 
-    background: rgba(200, 75, 49, 0.05);
+    border-color: rgba(163, 74, 74, 0.4); 
+    background: rgba(163, 74, 74, 0.1);
 }
 
 .qty-wrapper { 
@@ -212,9 +253,10 @@ body {
 .qty-control {
     display: flex;
     align-items: center;
-    border: 1px solid #D5D5D0;
-    border-radius: var(--radius-md);
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    border-radius: var(--radius-sm);
     overflow: hidden;
+    background: var(--surface);
 }
 
 .qty-num {
@@ -228,7 +270,7 @@ body {
     border: none; 
     width: 40px; 
     height: 40px; 
-    color: var(--text-dark); 
+    color: var(--accent); 
     font-size: 1.2rem;
     cursor: pointer;
 }
@@ -237,22 +279,23 @@ body {
 
 .btn-add-cart { 
     width: 100%; 
-    background: var(--surface); 
+    background: transparent; 
     color: var(--accent); 
     padding: 12px; 
     border: 1px solid var(--accent); 
-    border-radius: var(--radius-md); 
-    font-family: var(--font-body);
+    border-radius: var(--radius-sm); 
+    font-family: var(--font-heading);
     font-weight: 500; 
-    font-size: 0.9rem; 
-    letter-spacing: 1px;
+    font-size: 1rem; 
+    letter-spacing: 2px;
+    text-transform: uppercase;
     cursor: pointer;
     transition: all 0.3s;
 }
 
 .btn-add-cart:hover {
     background: var(--accent);
-    color: var(--surface);
+    color: var(--bg-main);
 }
 
 /* =========================================
@@ -265,12 +308,13 @@ body {
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    background: var(--accent);
-    color: var(--surface);
+    background: var(--bg-main);
+    color: var(--accent);
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 4px 15px rgba(74, 103, 65, 0.3);
+    border: 1px solid var(--accent);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.9);
     cursor: pointer;
     z-index: 100;
     transition: transform 0.3s;
@@ -282,16 +326,17 @@ body {
     position: absolute;
     top: -5px;
     right: -5px;
-    background: var(--danger);
-    color: white;
-    font-size: 0.75rem;
+    background: var(--accent);
+    color: var(--bg-main);
+    font-size: 0.8rem;
     font-weight: bold;
-    width: 22px;
-    height: 22px;
+    width: 24px;
+    height: 24px;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: 'Poppins', sans-serif;
 }
 
 .cart-modal {
@@ -300,7 +345,8 @@ body {
     width: 100%; max-width: 400px;
     height: 100vh;
     background: var(--surface);
-    box-shadow: -5px 0 30px rgba(0,0,0,0.1);
+    border-left: 1px solid rgba(212, 175, 55, 0.2);
+    box-shadow: -5px 0 30px rgba(0,0,0,0.8);
     z-index: 200;
     transition: right 0.4s ease;
     display: flex;
@@ -311,7 +357,7 @@ body {
 
 .cart-header {
     padding: 20px;
-    border-bottom: 1px solid #EAEAEA;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -320,13 +366,16 @@ body {
 .cart-header h3 {
     font-family: var(--font-heading);
     font-size: 1.5rem;
+    color: var(--accent);
+    letter-spacing: 1px;
 }
 
 .close-cart {
     background: transparent;
     border: none;
     cursor: pointer;
-    color: var(--text-dark);
+    color: var(--accent);
+    font-size: 1.5rem;
 }
 
 .cart-items-list {
@@ -341,7 +390,7 @@ body {
     align-items: center;
     padding-bottom: 15px;
     margin-bottom: 15px;
-    border-bottom: 1px solid #EAEAEA;
+    border-bottom: 1px dashed rgba(212, 175, 55, 0.2);
 }
 
 .btn-remove-item {
@@ -349,12 +398,13 @@ body {
     border: none;
     color: var(--danger);
     cursor: pointer;
+    font-size: 1.2rem;
 }
 
 .cart-footer {
     padding: 20px;
     background: var(--bg-main);
-    border-top: 1px solid #EAEAEA;
+    border-top: 1px solid rgba(212, 175, 55, 0.2);
 }
 
 .total-row {
@@ -364,29 +414,45 @@ body {
     font-size: 1.3rem;
     font-weight: 700;
     margin-bottom: 20px;
+    color: var(--accent);
 }
 
 .order-form select, .order-form input {
     width: 100%;
     padding: 12px;
     margin-bottom: 10px;
-    border: 1px solid #D5D5D0;
+    border: 1px solid rgba(212, 175, 55, 0.3);
     border-radius: var(--radius-sm);
     background: var(--surface);
-    font-family: var(--font-body);
+    color: var(--text-dark);
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Color del placeholder para los inputs oscuros */
+.order-form input::placeholder {
+    color: var(--text-muted);
+    opacity: 0.6;
 }
 
 .btn-send-order {
     width: 100%;
     padding: 15px;
     background: var(--accent);
-    color: var(--surface);
+    color: var(--bg-main);
     border: none;
-    border-radius: var(--radius-md);
-    font-size: 1rem;
-    font-weight: 500;
+    border-radius: var(--radius-sm);
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
     margin-top: 10px;
     cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-send-order:hover {
+    background: #e3c153;
 }
 
 /* Footer limpio */
@@ -402,7 +468,12 @@ body {
     align-items: center;
     justify-content: center;
     gap: 8px;
-    color: var(--text-dark);
+    color: var(--accent);
     text-decoration: none;
     margin-bottom: 15px;
+    transition: color 0.3s;
+}
+
+.compact-ig-link:hover {
+    color: #e3c153;
 }
