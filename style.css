@@ -477,3 +477,37 @@ body {
 .compact-ig-link:hover {
     color: #e3c153;
 }
+/* =========================================
+   DECORACIÓN LATERAL (ILUSTRACIONES DE FONDO)
+   ========================================= */
+body {
+    position: relative;
+    z-index: 1;
+}
+
+.side-decoration {
+    position: fixed; /* Mantiene la imagen fija al hacer scroll */
+    top: 50%;
+    transform: translateY(-50%); /* Centra la imagen verticalmente */
+    width: 250px; /* Tamaño de la ilustración */
+    height: auto;
+    z-index: 2; /* Por encima del fondo del body, pero por debajo del contenido */
+    opacity: 0.4; /* Opacidad sutil para que no compita con el texto */
+    pointer-events: none; /* Permite hacer clic a través del elemento */
+}
+
+.right-decoration {
+    right: 30px; /* Posicionamiento en el extremo derecho */
+}
+
+.container {
+    position: relative;
+    z-index: 10; /* Capa superior que se superpone al vector */
+}
+
+/* Modo Responsive: Desaparece por completo en pantallas medianas y pequeñas */
+@media (max-width: 1200px) {
+    .side-decoration {
+        display: none !important;
+    }
+}
