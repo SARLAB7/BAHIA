@@ -1,0 +1,1060 @@
+/* =========================================
+   VARIABLES GLOBALES: AURORA FOREST EDITION
+   ========================================= */
+:root {
+    --bg-main: #f0f2f5;
+    --bg-card: #ffffff;
+    --bg-sidebar: #ffffff; 
+    --text-main: #053931; /* Verde bosque profundo para máxima lectura */
+    --text-muted: #48A89A; 
+    --border: rgba(5, 57, 49, 0.1);
+    --input-bg: #f5f5f7;
+    
+    /* Paleta Aurora */
+    --accent-yellow: #48A89A; /* El menta base de la paleta */
+    --accent-hover: #00524D;  /* Verde más oscuro para contraste */
+    --accent-light: #CBEFEB;  /* El tono casi blanco para fondos suaves */
+    
+   --radius-soft: 12px; /* Bordes más rectos y modernos */
+    --radius-pill: 12px; /* Convertimos las "pastillas" en rectángulos suaves */
+}
+
+[data-theme="dark"] {
+    --bg-main: #000000;      /* Negro total de la paleta */
+    --bg-card: #053931;      /* El tono más oscuro Aurora Forest */
+    --bg-sidebar: #001512;   /* Un tono casi negro pero verdoso */
+    --text-main: #CBEFEB;    /* El color más claro para que brille en la oscuridad */
+    --text-muted: #48A89A; 
+    --border: rgba(203, 239, 235, 0.1);
+    --input-bg: #002b26;
+    --accent-yellow: #48A89A;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+body { 
+    background: var(--bg-main) !important; 
+    color: var(--text-main);
+    transition: 0.3s;
+}
+body, #admin-panel, .main-content {
+    background: var(--bg-main) !important;
+    color: var(--text-main);
+    transition: background 0.3s ease, color 0.3s ease;
+}
+/* Login  */
+/* =========================================
+   PANTALLA DE LOGIN (REDISEÑO ELEGANTE)
+   ========================================= */
+#login-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: var(--bg-main) !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    padding: 20px; /* Evita que choque en celulares pequeños */
+}
+
+/* La tarjeta central */
+.login-box {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 40px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08); 
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+}
+
+/* Título y Logo */
+.login-logo {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--text-main);
+    letter-spacing: 2px;
+    margin-bottom: -10px;
+}
+
+.login-logo span {
+    color: var(--accent-yellow); /* Punto en color menta */
+}
+
+.login-box h2 {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+/* Inputs de Correo y Contraseña */
+.input-group {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.input-group label {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding-left: 5px;
+}
+
+/* Botón principal (Menta) */
+.login-submit {
+    width: 100%;
+    padding: 14px;
+    border-radius: var(--radius-pill);
+    font-size: 1rem;
+    margin-top: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Línea divisoria "O continúa con" */
+.login-divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 10px 0;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+.login-divider::before,
+.login-divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid var(--border);
+}
+
+.login-divider span {
+    padding: 0 10px;
+}
+
+/* Botón de Google */
+.btn-google {
+    background: var(--input-bg);
+    color: var(--text-main);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-pill);
+    padding: 12px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.btn-google:hover {
+    background: var(--bg-card);
+    border-color: var(--accent-yellow);
+    box-shadow: 0 8px 20px rgba(136, 201, 188, 0.2);
+    transform: translateY(-2px);
+}
+.card-bento button:hover {
+    background: var(--accent-yellow) !important;
+    color: #000 !important;
+    transform: scale(1.1);
+    transition: all 0.2s ease;
+}
+
+/* Para que en modo oscuro el botón del reloj no se pierda */
+[data-theme="dark"] .card-bento button {
+    background: rgba(0, 0, 0, 0.3) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+}
+/* =========================================
+   LAYOUT PRINCIPAL: ESTRUCTURA FLOTANTE
+   ========================================= */
+
+#admin-panel { 
+    display: flex !important; 
+    width: 100vw; 
+    height: 100vh; 
+    background: var(--bg-main);
+    overflow: hidden;
+}
+/* SIDEBAR: ICON RAIL FLOTANTE */
+.sidebar { 
+    width: 85px !important; 
+    min-width: 85px !important;
+    height: calc(100vh - 40px);
+    margin: 20px;
+    background: var(--bg-sidebar) !important;
+    border-radius: 24px;
+    border: 1px solid var(--border);
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
+    padding: 30px 0; 
+    z-index: 1000; 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    flex-shrink: 0;
+}
+
+/* Ocultar textos innecesarios para el minimalismo */
+.sidebar .nav-text, 
+.sidebar span, 
+.sidebar-logo {
+    display: none !important;
+}
+
+/* LOGO SUPERIOR */
+.sidebar-logo-rail {
+    font-weight: 800;
+    font-size: 1.2rem;
+    color: var(--accent-yellow);
+    margin-bottom: 40px;
+    letter-spacing: -1px;
+    cursor: default;
+}
+
+/* CONTENEDOR DE ICONOS */
+.nav-items-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+/* ITEMS DE NAVEGACIÓN E INTERACTIVIDAD */
+.nav-item { 
+    width: 50px;
+    height: 50px;
+    padding: 0 !important;
+    border-radius: 16px; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+    color: var(--text-muted); 
+    border: none !important;
+    position: relative; /* Necesario para el tooltip */
+    cursor: pointer;
+}
+
+/* Efecto Hover: ¡Restaurado! */
+.nav-item:hover:not(.active) {
+    background: var(--input-bg);
+    color: var(--accent-yellow);
+    transform: translateX(5px); /* Pequeño salto a la derecha */
+}
+
+/* Estado Activo */
+.nav-item.active { 
+    background: var(--accent-yellow) !important; 
+    color: #053931 !important; 
+    box-shadow: 0 8px 15px rgba(72, 168, 154, 0.3);
+}
+
+/* TOOLTIPS: LOS TÍTULOS AL PASAR EL MOUSE */
+.nav-item::after {
+    content: attr(title); 
+    position: absolute;
+    left: 65px;
+    background: var(--bg-card);
+    color: var(--text-main);
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    border: 1px solid var(--border);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    z-index: 1000;
+}
+
+.nav-item:hover::after {
+    opacity: 1;
+    left: 75px; /* Se desliza suavemente al aparecer */
+}
+
+/* =========================================
+   INTERRUPTOR DE TEMA (MODO NOCHE)
+   ========================================= */
+.sidebar-footer {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.theme-switch-rail {
+    width: 32px;
+    height: 60px;
+    background: var(--input-bg);
+    border: 1px solid var(--border);
+    border-radius: 50px;
+    position: relative;
+    padding: 4px;
+    cursor: pointer;
+}
+
+.theme-switch-handle {
+    width: 24px;
+    height: 24px;
+    background: var(--bg-card);
+    border-radius: 50%;
+    position: absolute;
+    top: 4px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+[data-theme="dark"] .theme-switch-handle {
+    transform: translateY(28px);
+    background: #000;
+}
+
+/* CONTENIDO PRINCIPAL: AJUSTE PARA NO TRASLAPAR */
+.main-content { 
+    flex: 1; 
+    padding: 40px; 
+    height: 100vh;
+    overflow-y: auto;
+    background: var(--bg-main) !important;
+}
+.admin-sarlab-credit { padding: 20px 24px 0; font-size: 0.75rem; color: var(--text-muted); }
+.admin-sarlab-credit strong { color: var(--white); }
+
+
+.view-section { display: none; animation: fadeIn 0.4s ease; }
+.view-section.active { display: block; }
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+/* Dashboard Header */
+.dashboard-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+.dashboard-header h2 { font-size: 2rem; font-weight: 700; color: var(--white); }
+.row-hover:hover {
+    background: rgba(255, 255, 255, 0.03);
+}
+/* Contenedor de tabla estilo Glassmorphism */
+.dashboard-table-wrapper {
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+/* Filas con hover suave */
+.row-hover {
+    cursor: default;
+}
+
+.row-hover:hover {
+    background: rgba(255, 255, 255, 0.02) !important;
+}
+
+/* Estilo para los inputs de la tabla (más limpios) */
+.table-input-stock {
+    background: #0f1115 !important;
+    border: 1px solid var(--border) !important;
+    color: var(--accent-yellow) !important;
+    font-weight: 700 !important;
+    font-size: 1rem !important;
+    padding: 4px !important;
+    margin-bottom: 0 !important;
+    transition: all 0.2s ease;
+}
+
+.table-input-stock:focus {
+    border-color: var(--accent-yellow) !important;
+    box-shadow: 0 0 10px rgba(255, 204, 0, 0.15);
+}
+#busqueda-inventario {
+    transition: all 0.3s ease;
+    border: 1px solid var(--border);
+}
+
+#busqueda-inventario:focus {
+    /* width: 320px;  <-- ELIMINA ESTA LÍNEA */
+    border-color: var(--accent-yellow);
+    box-shadow: 0 0 15px rgba(255, 204, 0, 0.1);
+}
+/* Badges de estado */
+.status-badge {
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    display: inline-block;
+}
+/* 4. TABLA TRANSFORMADA A TARJETAS (Distribución Total) */
+/* 4. TABLA TRANSFORMADA A TARJETAS (Distribución Total) */
+.dashboard-table-container { 
+    overflow-x: auto !important; 
+    width: 100% !important;
+    padding: 0 !important;
+}
+
+.dashboard-table-container table { 
+    min-width: 100% !important; 
+    width: 100% !important; 
+    display: table !important; 
+}
+
+#v-balance tbody {
+    display: block;
+    width: 100%;
+}
+
+#v-balance tr.responsive-row {
+    display: block;
+    width: 100% !important; /* La tarjeta ahora cubre todo el ancho */
+    background: var(--card-dark);
+    margin-bottom: 20px; /* Más espacio entre tarjetas para que no se peguen */
+    border: 1px solid var(--border) !important;
+    border-radius: 16px;
+    padding: 15px; /* Más aire interno */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+#v-balance td {
+    display: flex;
+    justify-content: space-between; /* Empuja el título a la izquierda y el dato a la derecha */
+    align-items: center;
+    padding: 12px 0 !important; /* Espaciado vertical entre líneas */
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+    width: 100%;
+}
+
+#v-balance td:last-child { border-bottom: none; }
+
+/* Títulos  (Labels) */
+#v-balance td::before {
+    content: attr(data-label);
+    font-weight: 700;
+    color: var(--accent-yellow);
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    text-align: left;
+    flex: 1; /* Toma su espacio sin empujar demasiado */
+}
+
+/* Datos (Valores blancos/colores) */
+#v-balance td > div, 
+#v-balance td > span,
+#v-balance td input {
+    font-size: 1rem !important;
+    text-align: right;
+    flex: 2; /* Le damos más prioridad al dato para que no se corte */
+    display: flex;
+    justify-content: flex-end;
+}
+/* =========================================
+   COMPONENTES BENTO (TARJETAS)
+   ========================================= */
+.card-bento { background: var(--card-dark); border-radius: 24px; padding: 24px; border: 1px solid var(--border); }
+.card-title { font-size: 1.1rem; font-weight: 600; margin-bottom: 20px; color: var(--white); }
+
+/* Grid de Estadísticas */
+.bento-grid-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.card-yellow { background: var(--accent-yellow); color: #000; border: none; display: flex; flex-direction: column; }
+.card-danger { border-color: rgba(239, 68, 68, 0.3); background: rgba(239, 68, 68, 0.05); }
+.span-2 { grid-column: span 2; }
+
+/* Tipografía Stats Responsiva */
+.card-label { font-size: 0.85rem; font-weight: 600; opacity: 0.7; text-transform: uppercase; letter-spacing: 1px; }
+.big-number { font-size: clamp(2rem, 3.5vw, 3.5rem); font-weight: 800; margin: 10px 0; line-height: 1; word-break: break-word; }
+.big-number-small { font-size: clamp(1.5rem, 2.5vw, 2.2rem); font-weight: 700; margin: 10px 0; line-height: 1; word-break: break-word; }
+.card-sub { font-size: 0.85rem; opacity: 0.6; }
+
+.payment-list { display: flex; flex-direction: column; gap: 12px; margin-top: 15px; }
+.payment-item { display: flex; justify-content: space-between; padding-bottom: 12px; border-bottom: 1px solid var(--border); font-size: 0.95rem; }
+
+/* Formularios e Inputs */
+/* FIX: TEXTO EN INPUTS Y SELECTS  */
+input, select, textarea {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    max-width: 100%;
+    padding: 12px 16px !important; /* Un poco más de aire a los lados */
+    border-radius: var(--radius-soft) !important; /* Bordes redondeados */
+    border: 1px solid var(--border) !important;
+    background: var(--input-bg) !important;
+    color: var(--text-main) !important;
+    transition: all 0.3s ease;
+}
+
+input:focus, select:focus, textarea:focus { 
+    border-color: var(--accent-yellow) !important;
+    box-shadow: 0 0 0 3px rgba(136, 201, 188, 0.2); /* Resplandor menta suave */
+    outline: none;
+}
+/* Botones */
+
+button[onclick="abrirModalMerma()"] {
+    background: rgba(239, 68, 68, 0.1) !important; /* Fondo rojo clarito */
+    color: #ef4444 !important; /* Texto rojo */
+}
+
+button[onclick="abrirModalMerma()"]:hover {
+    background: rgba(239, 68, 68, 0.2) !important;
+}
+.btn-primary, .btn-yellow, .btn-action {
+    box-shadow: none !important; /* Adiós a las sombras brillantes */
+    text-shadow: none !important;
+}
+
+.btn-primary:hover, .btn-yellow:hover {
+    background: var(--accent-hover) !important;
+    box-shadow: 0 6px 16px rgba(136, 201, 188, 0.4);
+}
+.btn-action {
+    border-radius: var(--radius-pill) !important; /* Forma de pastilla */
+    padding: 10px 24px !important;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    border: none !important; /* Quitamos el borde duro */
+}
+.btn-outline {
+    background: var(--input-bg) !important; /* Fondo suave del tema */
+    color: var(--text-main) !important;
+}
+.btn-outline:hover {
+    filter: brightness(0.95);
+    transform: translateY(-1px);
+}
+.btn-theme {
+    width: 80%;
+    margin: 10px auto;
+    padding: 10px;
+    border-radius: 12px;
+    border: none;
+    background: var(--bg-card);
+    box-shadow: var(--nm-shadow);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+/* =========================================
+   PEDIDOS Y MESAS
+   ========================================= */
+
+/* =========================================
+   FIX: TARJETAS DE PEDIDOS (Elegante y Serio)
+   ========================================= */
+.pedido-card {
+    background: var(--bg-card) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 20px !important;
+    padding: 20px !important;
+    margin-bottom: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04) !important;
+    transition: transform 0.2s ease;
+}
+
+/* Borde indicador lateral mucho más fino (3px) y discreto */
+.pedido-card.pendiente { border-left: 3px solid var(--border) !important; } 
+.pedido-card.preparando { border-left: 3px solid var(--accent-yellow) !important; } 
+.pedido-card.listo { border-left: 3px solid var(--success) !important; }
+
+.acciones-pedido { margin-top: 15px; display: flex; gap: 8px; flex-direction: column; }
+.btn-estado { padding: 12px; border-radius: 10px; border: none; font-weight: 600; cursor: pointer; width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px; }
+.btn-preparar { background-color: var(--accent-yellow); color: #000; }
+.grid-pagos { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+.btn-pago { padding: 10px 4px; border-radius: 8px; border: none; cursor: pointer; font-weight: 600; font-size: 0.8rem; color: white; }
+/* Botones de Pago en tonos neutros y serios */
+.btn-pago, 
+.nequi { background-color: transparent !important; }
+.banco { background-color: transparent !important; }
+.efectivo { background-color: transparent !important; }
+
+/* 2. Forzamos el estilo serio y profesional en todos los botones de pago */
+.btn-pago, .nequi, .banco, .efectivo {
+    background: var(--input-bg) !important;
+    color: var(--text-muted) !important;
+    border: 1px solid var(--border) !important;
+    font-weight: 600 !important;
+    text-transform: uppercase;
+    transition: all 0.2s ease;
+}
+
+/* 3. HOVER ELEGANTE: Solo se iluminan sutilmente al pasar el mouse */
+.btn-pago:hover, .nequi:hover, .banco:hover, .efectivo:hover {
+    color: var(--text-main) !important;
+    border-color: var(--accent-yellow) !important;
+    background: var(--bg-card) !important;
+}
+
+/* Categorías Carta */
+.categoria-header { background: var(--sidebar); border: 1px solid var(--border); padding: 14px 18px; border-radius: 12px; margin-bottom: 8px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+.categoria-header h4 { margin: 0; color: var(--white); font-weight: 600; text-transform: capitalize; }
+.count-badge { background: rgba(255, 204, 0, 0.1); color: var(--accent-yellow); padding: 2px 10px; border-radius: 12px; font-size: 0.75rem; margin-left: 10px; font-weight: 700; }
+.lista-categoria { padding-left: 15px; border-left: 2px solid var(--border); margin-bottom: 20px; margin-top: 10px; }
+.lista-categoria-oculta, .lista-atendidos-oculta { display: none; }
+.plato-row { background: var(--sidebar); padding: 16px; margin-bottom: 10px; border-radius: 12px; border: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+
+/* Mesas */
+.mesas-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 20px; }
+.mesa-card { background: var(--sidebar); border: 2px solid var(--border); border-radius: 16px; padding: 24px 16px; text-align: center; display: flex; flex-direction: column; align-items: center; transition: 0.3s; }
+.mesa-libre { border-color: rgba(34, 197, 94, 0.3); }
+.mesa-ocupada { border-color: var(--accent-yellow); background: rgba(255, 204, 0, 0.05); cursor: pointer; }
+.mesa-ocupada:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(255, 204, 0, 0.1); }
+/* =========================================
+   MODALES (ESTILO ESPEJO REFINADO)
+   ========================================= */
+#modal-merma > div, 
+#modal-compra > div, 
+#delete-modal > div {
+    background: var(--bg-card) !important; /* Ahora se adapta al modo claro/oscuro automáticamente */
+    border: 1px solid var(--border) !important;
+    border-radius: 24px !important;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08) !important; /* Sombra suave, no dura */
+}
+#modal-compra h3, 
+#modal-merma h3, 
+#delete-modal h3 {
+    color: var(--text-main) !important; 
+    font-weight: 700 !important;
+}
+#f-compra label, 
+#f-merma label {
+    color: var(--text-muted) !important;
+    font-weight: 500;
+}
+
+/* Botones "Ingresar" y "Reportar" vivos y legibles */
+#f-compra button[type="submit"], 
+#f-merma button[type="submit"] {
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    opacity: 1 !important; /* Quita el efecto opaco */
+    border-radius: var(--radius-pill) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+/* Modales */
+.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); backdrop-filter: blur(5px); justify-content: center; align-items: center; z-index: 1000; }
+.modal-content { background: var(--card-dark); padding: 32px; border-radius: 24px; text-align: center; max-width: 400px; width: 90%; border: 1px solid var(--border); }
+
+
+/* =========================================
+   POWER SWITCH ICON (ON/OFF)
+   ========================================= */
+#power-icon {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    color: var(--text-muted); /* Apagado por defecto */
+}
+
+/* Cuando el sistema está en MODO CLARO (Sistema "Encendido") */
+[data-theme="light"] #power-icon {
+    color: var(--accent-yellow) !important;
+    filter: drop-shadow(0 0 8px rgba(255, 204, 0, 0.6));
+    transform: scale(1.1);
+}
+
+/* =========================================
+   FIX: LOGO ESCRITORIO
+   ========================================= */
+.sidebar-logo {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--white);
+    text-align: center; /* Esto lo centra perfectamente */
+    margin-bottom: 40px;
+    letter-spacing: 2px;
+    width: 100%;
+    display: block;
+}
+.sidebar-logo span { 
+    color: var(--accent-yellow); 
+}
+/* Estilos para el botón de Historial (Kardex) en la tabla de inventario */
+.btn-historial {
+    background: var(--input-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: var(--text-main);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease;
+    width: max-content; /* Evita que se estire a lo ancho */
+    margin-left: auto; /* Lo empuja a la derecha en modo móvil */
+}
+
+.btn-historial:hover {
+    background: var(--bg-card);
+    border-color: var(--accent-yellow);
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(72, 168, 154, 0.2);
+}
+/* =========================================
+  RESPONSIVE
+   ========================================= */
+@media (max-width: 768px) {
+    /* 1. Base y Layout */
+    body { overflow: hidden; height: 100dvh; }
+    #admin-panel { display: flex !important; flex-direction: row; height: 100dvh; }
+
+    /* 2. Sidebar Flotante de Cristal */
+    .sidebar {
+        width: 60px !important;
+        min-width: 60px !important;
+        max-width: 60px !important;
+        height: 100dvh !important;
+        margin: 0 !important;
+        padding: 20px 0 35px 0 !important;
+        position: fixed !important;
+        left: 0 !important;
+        top: 0 !important;
+        z-index: 1000 !important;
+        background: var(--bg-sidebar) !important;
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-right: 1px solid var(--border);
+        border-radius: 0 24px 24px 0 !important; /* Se ancla a la izquierda */
+    }
+    
+    .sidebar h2, .nav-item span, .sidebar-logo { display: none !important; }
+    .nav-item::after { display: none !important; } /* Matar tooltips fantasma */
+    
+    /* Logo SL y Botones en móvil */
+    .sidebar-logo-rail { font-size: 1.1rem !important; margin-bottom: 30px !important; }
+    .nav-item { width: 42px !important; height: 42px !important; margin-bottom: 12px !important; }
+
+    /* 3. Main Content: Matemáticamente exacto */
+   .main-content {
+        margin-left: 60px !important;
+        width: calc(100vw - 60px) !important;
+        height: 100dvh !important; 
+        padding: 20px 15px 80px 15px !important;
+        box-sizing: border-box !important;
+        overflow-x: hidden !important;
+    }
+
+    /* ==============================================
+       4. FIX: DES-APRETAR ELEMENTOS (Columnas 100%)
+       ============================================== */
+    /* Cabeceras, filtros y formularios pasan a columna vertical */
+    .view-section > div[style*="display: flex"],
+    header[style*="display: flex"],
+    #v-inventario > div:first-child,
+    .form-container div[style*="display:flex"],
+    .form-container div[style*="display: flex"] {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 15px !important;
+        height: auto !important;
+        width: 100% !important;
+    }
+
+    /* Envolturas internas de botones */
+    .view-section > div[style*="display: flex"] > div,
+    header[style*="display: flex"] > div {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        gap: 10px !important;
+    }
+
+    /* Inputs, Selects y Botones ocupan todo el ancho (Evita cortes) */
+    #filtro-balance, #busqueda-inventario, #periodo-selector,
+    .view-section header button, .btn-action,
+    .form-container input, .form-container select {
+        width: 100% !important;
+        margin: 0 0 8px 0 !important;
+        box-sizing: border-box !important;
+        height: auto !important;
+        white-space: normal !important;
+    }
+    
+    .form-container { padding: 20px 15px !important; }
+
+    /* Forzar tarjetas de métricas a 1 columna (Evita letras montadas) */
+    div[style*="grid-template-columns"] { grid-template-columns: 1fr !important; }
+
+    /* ==============================================
+       5. FIX: TABLAS A TARJETAS LATERALES
+       ============================================== */
+    thead, #v-balance thead, #v-inventario-real thead { display: none !important; }
+
+    .dashboard-table-container table,
+    #v-inventario-real table, #v-inventario-real tbody, #v-inventario-real tr,
+    #v-balance tbody, #v-balance tr.responsive-row {
+        display: block !important;
+        width: 100% !important;
+    }
+
+    .responsive-row {
+        background: var(--bg-card) !important;
+        border: 1px solid var(--border) !important;
+        border-radius: 16px !important;
+        margin-bottom: 15px !important;
+        padding: 15px !important;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05) !important;
+        box-sizing: border-box !important;
+    }
+
+    .responsive-row td, #v-inventario-real td, #v-balance td {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        width: 100% !important;
+        padding: 10px 0 !important;
+        border-bottom: 1px solid var(--border) !important;
+        text-align: right !important;
+        box-sizing: border-box !important;
+    }
+
+    .responsive-row td:last-child, #v-inventario-real td:last-child, #v-balance td:last-child {
+        border-bottom: none !important;
+    }
+
+    /* Inyección de Títulos Amarillos */
+    .responsive-row td::before, #v-inventario-real td::before, #v-balance td::before {
+        content: attr(data-label); /* ← ¡Recuerda que esto viene de admin-script.js! */
+        font-weight: 700;
+        color: var(--accent-yellow);
+        text-transform: uppercase;
+        font-size: 0.7rem;
+        flex: 1;
+        text-align: left;
+        padding-right: 10px;
+    }
+
+    /* Datos a la derecha */
+    .responsive-row td > *, #v-inventario-real td > *, #v-balance td > * {
+        flex: 1.5;
+        display: flex;
+        justify-content: flex-end;
+        word-break: break-word; /* Evita desbordamientos */
+        font-size: 0.9rem !important;
+        margin: 0 !important;
+        text-align: right;
+    }
+}
+
+/* =========================================
+   IMPRESIÓN TICKET
+   ========================================= */
+@media print { 
+    body * { visibility: hidden; } 
+    #ticket-impresion, #ticket-impresion * { visibility: visible; } 
+    #ticket-impresion { position: absolute; left: 0; top: 0; width: 100%; max-width: 80mm; background: white; color: black; padding: 10px; font-family: monospace; } 
+}
+
+/* =========================================
+   FIX: ESTÉTICA OSCURA UNIFORME Y ESPACIADA
+   ========================================= */
+
+/* 1. Tarjetas principales: Fondo oscuro, BORDES y PADDING para que respiren */
+/* FIX: TARJETAS DE MÉTRICAS (Texto Perdidas/Rechazos) */
+.admin-panel-card, .stat-card {
+    background: var(--bg-card) !important;
+    color: var(--text-main) !important;
+}
+
+/* 2. Textos de las tarjetas */
+.admin-panel-card h4, 
+.admin-panel-card span, 
+.admin-panel-card p, 
+.stat-card div {
+    color: var(--text-muted) !important;
+}
+
+.admin-panel-card strong, 
+.stat-card strong {
+    font-size: 1.3rem !important; /* Bajamos de 1.8rem a 1.3rem */
+    margin-top: 6px !important;
+    font-weight: 700;
+    display: block;
+}
+
+/* 2. Fix para la lista de Nequi, Banco, Efectivo (Que no sean gigantes) */
+.admin-panel-card .payment-item strong,
+.admin-panel-card div[style*="display: flex"] strong,
+.grid-pagos strong {
+    font-size: 0.95rem !important; /* Tamaño normal de texto */
+    margin-top: 0 !important;
+    display: inline-block;
+}
+
+/* 3. Fix específico para la caja de Rechazos */
+#rankings-rechazados strong {
+    font-size: 1.3rem !important;
+    margin-top: 6px !important;
+    display: block;
+    color: var(--text-main) !important;
+}
+.stat-card {
+    background: var(--bg-card) !important;
+    border-radius: 20px !important; /* Bordes amigables, adiós rectángulos rígidos */
+    border: 1px solid var(--border) !important;
+    padding: 24px !important; /* Espacio extra vital para que no se corte la V ni el $ */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04) !important; /* Sombra estilo neumórfico */
+    overflow: visible !important; /* IMPORTANTE: Esto evita que se coman las letras de los bordes */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+/* 3. Forzar al modo oscuro las sub-tarjetas generadas por el JavaScript (Los cuadros blancos internos) */
+#rankings-rechazados {
+    background: var(--input-bg) !important;
+    color: var(--text-main) !important;
+    border-radius: 12px;
+}
+#rankings-categoria div {
+    background-color: #16181d !important; /* Fondo oscuro para los recuadros internos */
+    color: var(--white) !important;
+    border: 1px solid var(--border) !important;
+}
+
+/* Ajusta los textos dentro de esas cajas rebeldes */
+#rankings-rechazados div p,
+#rankings-rechazados div span,
+#rankings-categoria div span {
+    color: var(--text-muted) !important;
+}
+
+/* 4. Magia: La PRIMERA tarjeta (Ventas de Hoy)*/
+.stat-card:nth-child(1) {
+    background: linear-gradient(135deg, #48A89A, #00524D) !important;
+    color: #CBEFEB !important; /* Letras casi blancas sobre fondo muy oscuro */
+}
+
+.stat-card:nth-child(1) div,
+.stat-card:nth-child(1) strong {
+    color: #ffffff !important;
+    padding-left: 2px; /* Un mini respiro extra izquierdo por seguridad */
+}
+
+/* 5. Selector de periodo (El desplegable) adaptado al modo oscuro */
+#periodo-selector {
+    background-color: var(--input-bg) !important; /* Fondo sutil integrado */
+    color: var(--text-main) !important;           /* Verde bosque profundo */
+    border: 1px solid var(--border) !important;
+    border-radius: 12px !important;               /* Bordes consistentes con el resto */
+    padding: 8px 16px !important;
+    font-size: 0.9rem !important;
+    font-weight: 600 !important;
+    cursor: pointer;
+    outline: none !important;
+    appearance: none;                             /* Quitamos la flecha nativa fea */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23053931' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 40px !important;
+    transition: all 0.3s ease;
+}
+
+#periodo-selector:hover {
+    border-color: var(--accent-yellow) !important;
+    background-color: var(--bg-card) !important;
+}
+
+/* Estilo para las opciones (El menú que cae) */
+#periodo-selector option {
+    background-color: var(--bg-card) !important;
+    color: var(--text-main) !important;
+    padding: 10px !important;
+}
+/* =========================================
+   FIX: VISIBILIDAD EN PEDIDOS Y KARDEX (HISTORIAL)
+   ========================================= */
+
+/* 1. Declarar los colores semánticos que faltaban */
+:root {
+    --success: #10b981; /* Verde esmeralda */
+    --danger: #ef4444;  /* Rojo pasión */
+    --info: #3b82f6;    /* Azul claro */
+}
+
+/* 2. Fix Botones de Método de Pago (Asegurar que Efectivo se vea) */
+.efectivo, .banco, .nequi { 
+    background-color: var(--input-bg) !important; 
+    color: var(--text-muted) !important;
+    border: 1px solid var(--border) !important;
+}
+
+/* 3. Fix Botones de Acciones en Pedidos (Rechazar, A Pendiente, Revertir) */
+.btn-outline {
+    color: var(--text-main) !important; /* Se adapta a claro/oscuro */
+    border: 1px solid var(--border) !important;
+    background: var(--input-bg) !important;
+}
+
+/* Le damos colores específicos e inteligentes a cada botón de acción */
+/* Botón "A Pendiente" sobrio */
+button[onclick*="revertirAPendiente"] {
+    color: var(--text-muted) !important;
+    border-color: var(--border) !important;
+    background: transparent !important;
+}
+/* Botón específico de Exportar */
+button[onclick*="exportar"], .btn-action {
+    border-radius: 12px !important;
+    padding: 10px 20px !important;
+    background-color: var(--accent-hover) !important; /* Verde más oscuro Aurora */
+    color: #CBEFEB !important; /* Letras claras para lectura perfecta */
+}
+button[onclick*="exportar"]:hover {
+    background-color: #053931 !important;
+    transform: none !important; /* Evitamos que el botón "salte" */
+}
+/* Botón "Rechazar": Neutro por defecto, rojo solo en hover */
+button[onclick*="rechazarPedido"] {
+    color: var(--text-muted) !important; 
+    border-color: var(--border) !important;
+    background: transparent !important;
+}
+
+button[onclick*="rechazarPedido"]:hover {
+    color: var(--danger) !important;
+    border-color: var(--danger) !important;
+    background: rgba(239, 68, 68, 0.05) !important;
+}
+
+/* 4. Fix Textos Invisibles en el Historial de Existencias (Kardex) */
+#seccion-kardex {
+    background: var(--bg-card) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 20px;
+}
+
+/* Forzar que el título y los datos respeten el color del texto principal */
+#kardex-titulo, 
+#seccion-kardex h3,
+#tabla-kardex-body td {
+    color: var(--text-main) !important;
+}
+
+/* El botón de Cerrar del historial */
+#seccion-kardex button {
+    color: var(--text-muted) !important;
+    font-weight: 600;
+}
+
+#seccion-kardex button:hover {
+    color: var(--danger) !important;
+}
+
+/* Garantizar que los mensajes de error se vean en rojo */
+#tabla-kardex-body td[style*="color:var(--danger)"] {
+    color: var(--danger) !important;
+}
