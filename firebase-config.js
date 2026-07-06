@@ -1,32 +1,21 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
-import { getFirestore, enableIndexedDbPersistence } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
-import { getAuth } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js";
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Tu configuración real de IKU
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-    apiKey: "AIzaSyCTAiCQ7hi-ZmBt2MYWzciELL-lB_SsE3A",
-    authDomain: "iku-menu-interactivo.firebaseapp.com",
-    projectId: "iku-menu-interactivo",
-    storageBucket: "iku-menu-interactivo.firebasestorage.app",
-    messagingSenderId: "59457697555",
-    appId: "1:59457697555:web:4a7c5fd069ad41936d4ce6",
-    measurementId: "G-KZZ81XXY8V"
+  apiKey: "AIzaSyAtYHzd4Hzj1krcFnR849Nuo-IHul84aHM",
+  authDomain: "bahia-9f8e1.firebaseapp.com",
+  projectId: "bahia-9f8e1",
+  storageBucket: "bahia-9f8e1.firebasestorage.app",
+  messagingSenderId: "453483653610",
+  appId: "1:453483653610:web:729540fac06994e3172a93",
+  measurementId: "G-WNGFM9R53C"
 };
 
-// Inicializar Firebase (Solo una vez)
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
-
-// Habilitar Persistencia Offline
-enableIndexedDbPersistence(db)
-  .catch((err) => {
-      if (err.code == 'failed-precondition') {
-          console.warn("Persistencia falló: múltiples pestañas abiertas.");
-      } else if (err.code == 'unimplemented') {
-          console.warn("El navegador no soporta persistencia local.");
-      }
-  });
-
-// Exportar las variables para SARLAB
-export { db, auth };
+const analytics = getAnalytics(app);
