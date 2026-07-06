@@ -213,7 +213,8 @@ window.iniciarTracker = (id) => {
 };
 
 onSnapshot(query(collection(db, "platos"), orderBy("nombre", "asc")), (snap) => {
-    const categorias = ['diario', 'almuerzo' , 'desayuno', 'especial', 'asado', 'rapida', 'bebida'];
+    // CORRECCIÓN: Lista de categorías reales del Gastrobar en mayúsculas
+    const categorias = ['COCTELES', 'VINOS', 'GRANIZADOS', 'CERVEZAS', 'BEBIDAS', 'SINALCOHOL'];
     categorias.forEach(id => { if(document.getElementById(id)) document.getElementById(id).innerHTML = ''; });
     document.getElementById('loader').style.display = 'none';
 
@@ -232,6 +233,7 @@ onSnapshot(query(collection(db, "platos"), orderBy("nombre", "asc")), (snap) => 
                 <button class="btn-add-cart" onclick="agregarAlCarrito('${d.nombre}', '${d.precio}', '${docSnap.id}')">AÑADIR</button>
             </div>
         </div>`;
+        
         const container = document.getElementById(d.categoria);
         if(container) container.insertAdjacentHTML('beforeend', html);
     });
