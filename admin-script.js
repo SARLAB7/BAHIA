@@ -528,7 +528,7 @@ function escucharCarta() {
         const list = document.getElementById('inv-list'); 
         if (!list) return;
         
-        // LAS LLAVES AHORA COINCIDEN EXACTAMENTE CON LOS VALUES DEL HTML
+        // RE-INCORPORADO 'otros' COMO SALVAVIDAS CONTRA DATOS ANTIGUOS
         const cats = { 
             COCTELES: { titulo: "Cócteles", platos: [] }, 
             VINOS: { titulo: "Vinos", platos: [] }, 
@@ -536,16 +536,16 @@ function escucharCarta() {
             CERVEZAS: { titulo: "Cervezas", platos: [] }, 
             BEBIDAS: { titulo: "Bebidas", platos: [] }, 
             SINALCOHOL: { titulo: "Sin Alcohol", platos: [] },  
+            otros: { titulo: "Otros / Platos Antiguos", platos: [] } 
         };        
         
         snap.forEach(d => {
             const it = d.data(); it.id = d.id; menuGlobal[it.nombre] = it;
             
-            // Ahora la verificación será exitosa
             if (cats[it.categoria]) {
                 cats[it.categoria].platos.push(it); 
             } else {
-                cats['otros'].platos.push(it);
+                cats['otros'].platos.push(it); // Ahora sí existirá el contenedor seguro
             }
         });
         
