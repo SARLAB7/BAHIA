@@ -528,19 +528,20 @@ function escucharCarta() {
         const list = document.getElementById('inv-list'); 
         if (!list) return;
         
-        // CORRECCIÓN 1: Las llaves deben coincidir EXACTAMENTE con los 'value' del HTML
-        // CORRECCIÓN 2: Se agregó la categoría 'otros' para evitar que se rompa si hay una categoría desconocida
+        // LAS LLAVES AHORA COINCIDEN EXACTAMENTE CON LOS VALUES DEL HTML
         const cats = { 
-            Sandwich: { titulo: "Sandwich", platos: [] }, 
-            Naturales: { titulo: "Jugos Naturales", platos: [] }, 
-            Bebidas: { titulo: "Otras bebidas", platos: [] }, 
-            Adiciones: { titulo: "Adiciones", platos: [] }, 
-            otros: { titulo: "Otros", platos: [] } 
+            COCTELES: { titulo: "Cócteles", platos: [] }, 
+            VINOS: { titulo: "Vinos", platos: [] }, 
+            GRANIZADOS: { titulo: "Granizados", platos: [] }, 
+            CERVEZAS: { titulo: "Cervezas", platos: [] }, 
+            BEBIDAS: { titulo: "Bebidas", platos: [] }, 
+            SINALCOHOL: { titulo: "Sin Alcohol", platos: [] },  
         };        
         
         snap.forEach(d => {
             const it = d.data(); it.id = d.id; menuGlobal[it.nombre] = it;
-            // Si la categoría existe en cats, lo mete ahí. Si no, lo mete en 'otros'
+            
+            // Ahora la verificación será exitosa
             if (cats[it.categoria]) {
                 cats[it.categoria].platos.push(it); 
             } else {
